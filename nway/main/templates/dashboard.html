@@ -9,5 +9,33 @@
 		<p class="navbar-text navbar-right"><a href="{% url 'nway_logout' %}" class="navbar-link">Logout</a></p>
   	</div>
 </nav>
+
+
+{% block main-container %}
+
+<select ng-model="abc">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+</select>
+
+
+<div class="animate-switch-container" ng-switch on="abc">
+    <div class="animate-switch" ng-switch-when="1">
+      <ng-include src="'/static/vt/js/ngapp/tmplts/form1.html'"></ng-include>
+    </div>
+    <div class="animate-switch" ng-switch-when="2">
+      <ng-include src="'/static/vt/js/ngapp/tmplts/form2.html'"></ng-include>
+    </div>
+    <div class="animate-switch" ng-switch-default>default</div>
+</div>
+
+
+{% endblock main-container %}
+
+
+
+
 {% endblock body %}
 
