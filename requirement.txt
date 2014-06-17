@@ -1,0 +1,9 @@
+Django
+South
+djangorestframework
+ipdb
+ipython
+MySQL-python
+
+#photomanagements
+git+https://github.com/siteshwar/django-photologue.git@algin#egg=django_photologue

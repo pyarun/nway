@@ -1,0 +1,7 @@
+/.project
+/.pydevproject
+*.class
+*.pyc
+*.pyo
+*/.git/*
+media
