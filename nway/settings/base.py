@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+PROJECT_PATH = os.path.split(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))[0]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -36,7 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south'
+    'main',
+    'south',
+    'compressor',
+    'django_extensions'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,20 +51,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = ('main.backends.EmailAuthBackend',)
+
 ROOT_URLCONF = 'nway.urls'
 
 WSGI_APPLICATION = 'nway.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -77,7 +71,16 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATIC_ROOT = os.path.join(PROJECT_PATH, "assets")
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.abspath(os.path.join(PROJECT_PATH, "static")),
+)
