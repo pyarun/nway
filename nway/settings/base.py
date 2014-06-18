@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     "categories.editor",
     "photologue",
     'seo',
-    'taggit'
+    'taggit',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
