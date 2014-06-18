@@ -12,6 +12,7 @@ ipdb==0.8
 ipython==2.1.0
 six==1.7.2
 wsgiref==0.1.2
-
+django-categories==1.2.2
+django-taggit==0.12
 #photomanagements
 git+https://github.com/siteshwar/django-photologue.git@algin#egg=django_photologue

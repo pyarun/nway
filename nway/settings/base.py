@@ -39,7 +39,11 @@ INSTALLED_APPS = (
     'main',
     'south',
     'compressor',
-    'django_extensions'
+    'django_extensions',
+    "categories.editor",
+    "photologue",
+    'seo',
+    'taggit'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,3 +88,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.abspath(os.path.join(PROJECT_PATH, "static")),
 )
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
