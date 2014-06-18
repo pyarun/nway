@@ -1,3 +1,3 @@
 'use strict';
 
-var nwayApp = angular.module("nwayApp", []);
+var nwayapp = angular.module("nwayApp", ["nwayApp.controllers"]);
