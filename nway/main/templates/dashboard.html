@@ -6,36 +6,20 @@
 			<p class="navbar-text navbar-right"><a href="{% url 'nway_logout' %}" class="navbar-link">Logout</a></p>
 	  	</div>
 	</nav>
-	
-	<div ng-controller="DashboardTabsCtrl">
+	{% endblock header %}
+	{% block main-container %}
+	<div ng-controller="DashboardTabsCtrl" class="container">
   		<tabset>
-  			{% verbatim %}
-    		<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
-      		{{tab.content}}
+    		<tab heading="Dashboard" active="active" >
+      		Dashboard
     		</tab>
-    		{% endverbatim %}
+    		<tab heading="Add Item" >
+          <div ng-include="'/static/vt/js/ngapp/tmplts/additemform.html'">
+        </tab>
   		</tabset>
 	</div>
 
-	{% endblock header %}
-	{% block main-container %}
+	
 
-	 	<select ng-model="abc">
-	  		<option>1</option>
-	  		<option>2</option>
-	  		<option>3</option>
-	  		<option>4</option>
-		</select>
-
-
-		<div class="animate-switch-container" ng-switch on="abc">
-		    <div class="animate-switch" ng-switch-when="1">
-		      <ng-include src="'/static/vt/js/ngapp/tmplts/form1.html'"></ng-include>
-		    </div>
-		    <div class="animate-switch" ng-switch-when="2">
-		      <ng-include src="'/static/vt/js/ngapp/tmplts/form2.html'"></ng-include>
-		    </div>
-		    <div class="animate-switch" ng-switch-default>default</div>
-		</div>
 {% endblock main-container %}
 

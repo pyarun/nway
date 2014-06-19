@@ -1,0 +1,23 @@
+
+<div class="container" ng-controller="AddItemCtrl">
+  <div class="row">
+    <div class="col-md-8">
+        <div class="well well-sm">
+          <h4> Add New Product </h4>
+          <hr>
+          
+          <select ng-model="formToshow" ng-options="category.name for category in productCategories"></select>
+          
+          <div ng-repeat="category in productCategories">
+            <div ng-if="formToshow.id==category.id">
+              <form>
+                 <div ng-include="'/static/vt/js/ngapp/tmplts/form1.html'"></div><!--use url to render the template-->
+              </form>
+            </div>
+          </div>
+        
+        </div>
+    </div>
+    
+  </div>
+</div>
