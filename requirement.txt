@@ -16,3 +16,5 @@ django-categories==1.2.2
 django-taggit==0.12
 #photomanagements
 git+https://github.com/siteshwar/django-photologue.git@algin#egg=django_photologue
+django-registration==1.0
+django-js-reverse==0.2.1

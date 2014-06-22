@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.urlresolvers import reverse_lazy
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_PATH = os.path.split(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))[0]
@@ -44,7 +45,9 @@ INSTALLED_APPS = (
     "photologue",
     'seo',
     'taggit',
-    'rest_framework'
+    'rest_framework',
+    'registration',
+    'django_js_reverse'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,3 +96,8 @@ STATICFILES_DIRS = (
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
 }
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+
+
+LOGIN_URL = reverse_lazy("nway_login")

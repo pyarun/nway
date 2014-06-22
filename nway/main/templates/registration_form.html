@@ -1,0 +1,65 @@
+
+<script type="text/ng-template" id="register.html">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><strong>Register</strong></h3></div>
+    <div class="panel-body">
+      {% verbatim %}
+      <alert ng-if="alert" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+      {% endverbatim %}
+      <form id="registrationform" name="registrationform" novalidate >
+        
+        <div class="form-group" ng-class="{ 'has-error' : registrationform.firstname.$invalid && !registrationform.firstname.$pristine }">
+          <label for="exampleInputEmail1">First Name</label>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.firstname.$invalid">
+              This field is required.
+          </span>
+          <input type="text" name="firstname" class="form-control" ng-model="registrationModel.firstname" required />
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error' : registrationform.lastname.$invalid && !registrationform.lastname.$pristine }">
+          <label for="exampleInputPassword1">Last Name</label>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.lastname.$invalid">
+              This field is required.
+          </span>
+          <input type="text" name="lastname" class="form-control" ng-model="registrationModel.lastname" required />
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error' : registrationform.email.$invalid && !registrationform.email.$pristine }">
+          <label for="exampleInputPassword1">Email</label>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.email.$error.required" >
+              This field is required.
+          </span>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.email.$error.email">
+              Not a valid email id.
+          </span>
+          <input type="email" name="email" class="form-control" ng-model="registrationModel.email" required />
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error' : registrationform.password1.$invalid && !registrationform.password1.$pristine }">
+          <label for="exampleInputPassword1">Password</label>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.password1.$invalid">
+              This field is required.
+          </span>
+          <input type="password" name="password1" class="form-control" ng-model="registrationModel.password1" required />
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : registrationform.password2.$invalid && !registrationform.password2.$pristine }">
+          <label for="exampleInputPassword2">Repeat Password</label>
+          <span class="text-danger pull-right" ng-show="showFormErrors && registrationform.password2.$invalid">
+              This field is required.
+          </span>
+          <input type="password" name="password2" class="form-control" ng-model="registrationModel.password2" required />
+          <span class="text-danger pull-right" ng-show="showFormErrors && !registrationform.password2.$pristine && registrationModel.password2!=registrationModel.password1">
+              Password and Repeat Password should match
+          </span>
+        </div>
+        
+
+        <div>
+          <button class="btn btn-sm btn-success" ng-click="registerUser();" >Create Account</button>
+          <a href="#login/" class="pull-right">Login<i class="glyphicon glyphicon-arrow-right"></i></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</script>
