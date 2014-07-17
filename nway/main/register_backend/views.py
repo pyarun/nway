@@ -40,11 +40,9 @@ class RegistrationView(BaseRegistrationView):
     up and logged in).
     
     """
-    disallowed_url = 'registration_disallowed'
     form_class = RegistrationForm
     http_method_names = ['post']
     success_url = reverse_lazy("dashboard")
-    template_name = 'registration/registration_form.html'
     
     def form_invalid(self, form, request=None):
         return HttpResponse(json.dumps(form.errors), status=422, mimetype="application/json")
@@ -61,21 +59,6 @@ class RegistrationView(BaseRegistrationView):
                                      user=new_user,
                                      request=request)
         return new_user
-
-    def registration_allowed(self, request):
-        """
-        Indicate whether account registration is currently permitted,
-        based on the value of the setting ``REGISTRATION_OPEN``. This
-        is determined as follows:
-
-        * If ``REGISTRATION_OPEN`` is not specified in settings, or is
-          set to ``True``, registration is permitted.
-
-        * If ``REGISTRATION_OPEN`` is both specified and set to
-          ``False``, registration is not permitted.
-        
-        """
-        return getattr(settings, 'REGISTRATION_OPEN', True)
 
     def form_valid(self, request, form):
         new_user = self.register(request, **form.cleaned_data)
